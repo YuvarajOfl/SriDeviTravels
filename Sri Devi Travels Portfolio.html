@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sri Devi Travels — Explore Tamil Nadu with Comfort & Trust</title>
+<meta name="description" content="Sri Devi Travels offers premium travel services across Tamil Nadu — Ooty, Kodaikanal, Munnar, Madurai, Rameswaram, Kanyakumari and beyond.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #0a3d62;
+    --primary-light: #1a5276;
+    --accent: #27ae60;
+    --accent-warm: #e67e22;
+    --gold: #c9a84c;
+    --bg: #f8f9fa;
+    --bg-card: #ffffff;
+    --text: #1a1a2e;
+    --text-muted: #5a6272;
+    --text-light: #8a93a3;
+    --border: #e8edf2;
+    --shadow-sm: 0 2px 12px rgba(10,61,98,0.08);
+    --shadow-md: 0 8px 32px rgba(10,61,98,0.12);
+    --shadow-lg: 0 20px 60px rgba(10,61,98,0.16);
+    --radius: 16px;
+    --radius-sm: 8px;
+    --font-display: 'Cormorant Garamond', serif;
+    --font-body: 'Outfit', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--text);
+    background: var(--bg);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ===== NAVBAR ===== */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    padding: 0 5%;
+    height: 70px;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(10,61,98,0.08);
+    transition: all 0.3s ease;
+  }
+  nav.scrolled {
+    box-shadow: var(--shadow-sm);
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 10px;
+    text-decoration: none;
+  }
+  .nav-logo-icon {
+    width: 38px; height: 38px;
+    background: var(--primary);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-size: 18px;
+  }
+  .nav-logo-text {
+    display: flex; flex-direction: column; line-height: 1.1;
+  }
+  .nav-logo-text span:first-child {
+    font-family: var(--font-display);
+    font-size: 1.2rem; font-weight: 700;
+    color: var(--primary);
+  }
+  .nav-logo-text span:last-child {
+    font-size: 0.65rem; color: var(--text-muted);
+    letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  .nav-links {
+    display: flex; align-items: center; gap: 2rem;
+    list-style: none;
+  }
+  .nav-links a {
+    text-decoration: none; color: var(--text-muted);
+    font-size: 0.875rem; font-weight: 500;
+    transition: color 0.2s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+    height: 2px; background: var(--accent);
+    transform: scaleX(0); transition: transform 0.2s;
+  }
+  .nav-links a:hover { color: var(--primary); }
+  .nav-links a:hover::after { transform: scaleX(1); }
+  .nav-cta {
+    background: var(--primary); color: white !important;
+    padding: 8px 20px; border-radius: 30px;
+    font-weight: 600 !important; font-size: 0.85rem !important;
+    transition: background 0.2s, transform 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--primary-light) !important; transform: translateY(-1px); }
+  .nav-cta::after { display: none !important; }
+  .nav-hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+  .nav-hamburger span { width: 24px; height: 2px; background: var(--primary); border-radius: 2px; transition: all 0.3s; }
+
+  /* ===== HERO ===== */
+  #hero {
+    height: 100vh; min-height: 700px;
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&q=90&v3');
+    background-size: cover; background-position: center 40%;
+    transform: scale(1.05);
+    animation: heroZoom 12s ease-in-out infinite alternate;
+  }
+  @keyframes heroZoom {
+    from { transform: scale(1.05); }
+    to { transform: scale(1.0); }
+  }
+  .hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(10,61,98,0.82) 0%,
+      rgba(10,61,98,0.55) 50%,
+      rgba(39,174,96,0.3) 100%
+    );
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    text-align: center; color: white;
+    padding: 0 5%;
+    max-width: 900px;
+    animation: heroFadeUp 1s ease both;
+  }
+  @keyframes heroFadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(201,168,76,0.25);
+    border: 1px solid rgba(201,168,76,0.5);
+    color: #f0d87a; padding: 6px 16px; border-radius: 30px;
+    font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    animation: heroFadeUp 1s 0.2s ease both;
+  }
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-weight: 700; line-height: 1.05;
+    margin-bottom: 1rem;
+    animation: heroFadeUp 1s 0.3s ease both;
+  }
+  .hero-title .highlight { color: #7ed6df; }
+  .hero-tagline {
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    font-weight: 300; opacity: 0.9;
+    margin-bottom: 1rem;
+    letter-spacing: 0.02em;
+    animation: heroFadeUp 1s 0.4s ease both;
+  }
+  .hero-sub {
+    font-size: 0.95rem; opacity: 0.75; margin-bottom: 2.5rem;
+    max-width: 560px; margin-left: auto; margin-right: auto;
+    line-height: 1.7;
+    animation: heroFadeUp 1s 0.5s ease both;
+  }
+  .hero-btns {
+    display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+    animation: heroFadeUp 1s 0.6s ease both;
+  }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--accent); color: white;
+    padding: 14px 32px; border-radius: 50px;
+    font-weight: 600; font-size: 1rem;
+    text-decoration: none; transition: all 0.3s;
+    box-shadow: 0 4px 20px rgba(39,174,96,0.4);
+  }
+  .btn-primary:hover { background: #219a52; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(39,174,96,0.5); }
+  .btn-outline {
+    display: inline-flex; align-items: center; gap: 8px;
+    border: 2px solid rgba(255,255,255,0.7); color: white;
+    padding: 12px 30px; border-radius: 50px;
+    font-weight: 500; font-size: 1rem;
+    text-decoration: none; transition: all 0.3s;
+  }
+  .btn-outline:hover { background: rgba(255,255,255,0.15); border-color: white; transform: translateY(-2px); }
+  .hero-scroll {
+    position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    color: rgba(255,255,255,0.6); font-size: 0.75rem; letter-spacing: 0.1em;
+    text-transform: uppercase;
+    animation: heroFadeUp 1s 1s ease both;
+  }
+  .hero-scroll-line {
+    width: 1px; height: 50px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.5), transparent);
+    animation: scrollLine 2s ease-in-out infinite;
+  }
+  @keyframes scrollLine {
+    0%, 100% { opacity: 0.4; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.2); }
+  }
+  .hero-stats {
+    position: absolute; bottom: 5rem; left: 5%;
+    display: flex; gap: 2rem; z-index: 2;
+    animation: heroFadeUp 1s 0.7s ease both;
+  }
+  .hero-stat { color: white; text-align: center; }
+  .hero-stat-num {
+    font-family: var(--font-display);
+    font-size: 2rem; font-weight: 700; line-height: 1;
+    color: #7ed6df;
+  }
+  .hero-stat-label { font-size: 0.75rem; opacity: 0.7; margin-top: 2px; }
+
+  /* ===== SECTION COMMON ===== */
+  section { padding: 80px 5%; }
+  .section-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    color: var(--accent); font-size: 0.8rem; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .section-tag::before {
+    content: ''; width: 24px; height: 2px; background: var(--accent);
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 700; color: var(--primary);
+    line-height: 1.15; margin-bottom: 1rem;
+  }
+  .section-sub {
+    color: var(--text-muted); max-width: 560px;
+    line-height: 1.7; font-size: 1rem;
+  }
+  .section-header { margin-bottom: 3rem; }
+  .section-header.center { text-align: center; }
+  .section-header.center .section-tag { justify-content: center; }
+  .section-header.center .section-tag::before { display: none; }
+  .section-header.center .section-tag::after { content: ''; width: 24px; height: 2px; background: var(--accent); }
+  .section-header.center .section-sub { margin: 0 auto; }
+
+  /* ===== ABOUT ===== */
+  #about {
+    background: white;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem;
+    align-items: center;
+  }
+  .about-image-wrap { position: relative; }
+  .about-img-main {
+    width: 100%; aspect-ratio: 4/3; object-fit: cover;
+    border-radius: var(--radius); box-shadow: var(--shadow-lg);
+  }
+  .about-img-badge {
+    position: absolute; bottom: -1.5rem; right: -1.5rem;
+    background: var(--primary);
+    color: white; padding: 1.5rem;
+    border-radius: var(--radius);
+    text-align: center; box-shadow: var(--shadow-md);
+  }
+  .about-img-badge strong {
+    font-family: var(--font-display);
+    font-size: 2.5rem; display: block; line-height: 1;
+    color: #7ed6df;
+  }
+  .about-img-badge span { font-size: 0.75rem; opacity: 0.8; text-transform: uppercase; letter-spacing: 0.08em; }
+  .about-text p { color: var(--text-muted); line-height: 1.8; margin-bottom: 1rem; }
+  .about-features {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem;
+  }
+  .about-feat {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 12px; background: var(--bg); border-radius: var(--radius-sm);
+  }
+  .about-feat-icon {
+    width: 36px; height: 36px; min-width: 36px;
+    background: rgba(39,174,96,0.12); color: var(--accent);
+    border-radius: 8px; display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+  }
+  .about-feat-text strong { font-size: 0.85rem; color: var(--text); display: block; margin-bottom: 2px; }
+  .about-feat-text span { font-size: 0.78rem; color: var(--text-muted); }
+
+  /* ===== SERVICES ===== */
+  #services { background: var(--bg); }
+  .services-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;
+  }
+  .service-card {
+    background: white; border-radius: var(--radius);
+    padding: 2rem 1.5rem;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s;
+    cursor: default;
+    border: 1px solid transparent;
+    position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 4px; height: 100%;
+    background: var(--accent);
+    transform: scaleY(0); transform-origin: bottom;
+    transition: transform 0.3s;
+  }
+  .service-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); border-color: rgba(39,174,96,0.2); }
+  .service-card:hover::before { transform: scaleY(1); }
+  .service-icon {
+    width: 56px; height: 56px;
+    background: linear-gradient(135deg, rgba(10,61,98,0.08), rgba(39,174,96,0.1));
+    border-radius: 14px; display: flex; align-items: center; justify-content: center;
+    font-size: 1.6rem; margin-bottom: 1.25rem;
+  }
+  .service-card h3 { font-size: 1.05rem; font-weight: 600; color: var(--primary); margin-bottom: 0.5rem; }
+  .service-card p { font-size: 0.875rem; color: var(--text-muted); line-height: 1.6; }
+
+  /* ===== DESTINATIONS ===== */
+  #destinations { background: white; }
+  .destinations-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;
+  }
+  .dest-card {
+    border-radius: var(--radius); overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s;
+    cursor: pointer;
+    background: white;
+  }
+  .dest-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+  .dest-img-wrap { position: relative; overflow: hidden; aspect-ratio: 16/10; }
+  .dest-img-wrap img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  .dest-card:hover .dest-img-wrap img { transform: scale(1.06); }
+  .dest-badge {
+    position: absolute; top: 12px; right: 12px;
+    background: rgba(10,61,98,0.85); color: white;
+    padding: 4px 12px; border-radius: 20px;
+    font-size: 0.72rem; font-weight: 600;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    backdrop-filter: blur(4px);
+  }
+  .dest-body { padding: 1.25rem 1.5rem 1.5rem; }
+  .dest-body h3 {
+    font-family: var(--font-display);
+    font-size: 1.35rem; font-weight: 700; color: var(--primary); margin-bottom: 0.4rem;
+  }
+  .dest-body p { font-size: 0.875rem; color: var(--text-muted); line-height: 1.6; }
+  .dest-link {
+    display: inline-flex; align-items: center; gap: 5px;
+    color: var(--accent); font-size: 0.85rem; font-weight: 600;
+    margin-top: 0.75rem; text-decoration: none;
+    transition: gap 0.2s;
+  }
+  .dest-link:hover { gap: 8px; }
+
+  /* ===== VEHICLES ===== */
+  #vehicles { background: var(--primary); position: relative; overflow: hidden; }
+  #vehicles::before {
+    content: ''; position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  #vehicles .section-title { color: white; }
+  #vehicles .section-tag { color: #7ed6df; }
+  #vehicles .section-tag::before { background: #7ed6df; }
+  #vehicles .section-sub { color: rgba(255,255,255,0.65); }
+  .vehicles-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem;
+  }
+  .vehicle-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--radius); overflow: hidden;
+    transition: all 0.3s;
+    backdrop-filter: blur(10px);
+  }
+  .vehicle-card:hover { background: rgba(255,255,255,0.1); transform: translateY(-4px); border-color: rgba(255,255,255,0.25); }
+  .vehicle-img-wrap { overflow: hidden; aspect-ratio: 16/9; }
+  .vehicle-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+  .vehicle-card:hover .vehicle-img-wrap img { transform: scale(1.05); }
+  .vehicle-body { padding: 1.25rem 1.5rem; }
+  .vehicle-body h3 { font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 0.75rem; }
+  .vehicle-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .vehicle-tag {
+    background: rgba(39,174,96,0.2); color: #6ee09d;
+    padding: 3px 10px; border-radius: 20px;
+    font-size: 0.72rem; font-weight: 500;
+    border: 1px solid rgba(39,174,96,0.3);
+  }
+
+  /* ===== WHY CHOOSE US ===== */
+  #why { background: var(--bg); }
+  .why-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem;
+  }
+  .why-card {
+    background: white; border-radius: var(--radius);
+    padding: 2rem; text-align: center;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s;
+    border: 1px solid transparent;
+  }
+  .why-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: rgba(39,174,96,0.2); }
+  .why-icon {
+    width: 64px; height: 64px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    color: white; display: flex; align-items: center; justify-content: center;
+    font-size: 1.6rem; margin: 0 auto 1.25rem;
+    box-shadow: 0 8px 20px rgba(10,61,98,0.25);
+  }
+  .why-card h3 { font-size: 1rem; font-weight: 600; color: var(--primary); margin-bottom: 0.5rem; }
+  .why-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
+
+  /* ===== TESTIMONIALS ===== */
+  #testimonials { background: white; }
+  .testimonials-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;
+  }
+  .testi-card {
+    background: var(--bg); border-radius: var(--radius);
+    padding: 2rem; box-shadow: var(--shadow-sm);
+    border-left: 4px solid var(--accent);
+    transition: all 0.3s;
+  }
+  .testi-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+  .testi-stars { color: #f1c40f; margin-bottom: 1rem; font-size: 1rem; }
+  .testi-text { color: var(--text-muted); font-size: 0.9rem; line-height: 1.7; font-style: italic; margin-bottom: 1.25rem; }
+  .testi-author { display: flex; align-items: center; gap: 10px; }
+  .testi-avatar {
+    width: 42px; height: 42px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-weight: 700; font-size: 1rem;
+  }
+  .testi-name strong { display: block; font-size: 0.9rem; color: var(--text); }
+  .testi-name span { font-size: 0.78rem; color: var(--text-muted); }
+
+  /* ===== CONTACT ===== */
+  #contact { background: var(--bg); }
+  .contact-layout {
+    display: grid; grid-template-columns: 1fr 1.4fr; gap: 4rem; align-items: start;
+  }
+  .contact-info-card {
+    background: var(--primary); color: white;
+    border-radius: var(--radius); padding: 2.5rem;
+    box-shadow: var(--shadow-lg);
+    position: relative; overflow: hidden;
+  }
+  .contact-info-card::after {
+    content: ''; position: absolute; bottom: -3rem; right: -3rem;
+    width: 150px; height: 150px;
+    background: rgba(255,255,255,0.04); border-radius: 50%;
+  }
+  .contact-info-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem;
+  }
+  .contact-info-card p { opacity: 0.75; font-size: 0.9rem; line-height: 1.6; margin-bottom: 2rem; }
+  .contact-items { display: flex; flex-direction: column; gap: 1.25rem; }
+  .contact-item { display: flex; align-items: flex-start; gap: 1rem; }
+  .contact-item-icon {
+    width: 42px; height: 42px; min-width: 42px;
+    background: rgba(255,255,255,0.1); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+  }
+  .contact-item-text strong { display: block; font-size: 0.8rem; opacity: 0.6; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 3px; }
+  .contact-item-text a { color: white; text-decoration: none; font-size: 0.95rem; font-weight: 500; opacity: 0.9; }
+  .contact-item-text a:hover { opacity: 1; text-decoration: underline; }
+  .contact-btns { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 2rem; }
+  .contact-btn {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 12px 20px; border-radius: 10px;
+    font-size: 0.9rem; font-weight: 600;
+    text-decoration: none; transition: all 0.2s;
+  }
+  .contact-btn.whatsapp { background: #25D366; color: white; }
+  .contact-btn.whatsapp:hover { background: #1ebe5c; transform: translateY(-2px); }
+  .contact-btn.call { background: rgba(255,255,255,0.12); color: white; border: 1px solid rgba(255,255,255,0.2); }
+  .contact-btn.call:hover { background: rgba(255,255,255,0.2); transform: translateY(-2px); }
+  .contact-form-wrap {
+    background: white; border-radius: var(--radius); padding: 2.5rem;
+    box-shadow: var(--shadow-md);
+  }
+  .contact-form-wrap h3 {
+    font-family: var(--font-display);
+    font-size: 1.5rem; color: var(--primary); margin-bottom: 0.5rem;
+  }
+  .contact-form-wrap p { color: var(--text-muted); font-size: 0.875rem; margin-bottom: 1.5rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-group { margin-bottom: 1rem; }
+  .form-group label { display: block; font-size: 0.82rem; font-weight: 600; color: var(--text); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .form-group input, .form-group select, .form-group textarea {
+    width: 100%; padding: 12px 14px;
+    border: 1.5px solid var(--border); border-radius: 10px;
+    font-family: var(--font-body); font-size: 0.9rem; color: var(--text);
+    background: var(--bg); outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    border-color: var(--primary); box-shadow: 0 0 0 3px rgba(10,61,98,0.08);
+    background: white;
+  }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .btn-submit {
+    width: 100%; padding: 14px;
+    background: var(--primary); color: white;
+    border: none; border-radius: 10px;
+    font-family: var(--font-body); font-size: 1rem; font-weight: 600;
+    cursor: pointer; transition: all 0.3s;
+  }
+  .btn-submit:hover { background: var(--primary-light); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: #0d1b2e; color: white;
+    padding: 60px 5% 30px;
+  }
+  .footer-grid {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem; margin-bottom: 3rem;
+  }
+  .footer-brand p { color: rgba(255,255,255,0.55); font-size: 0.875rem; line-height: 1.7; margin: 1rem 0; }
+  .footer-social { display: flex; gap: 10px; margin-top: 1rem; }
+  .footer-social a {
+    width: 36px; height: 36px;
+    background: rgba(255,255,255,0.08); border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.9rem;
+    transition: all 0.2s;
+  }
+  .footer-social a:hover { background: var(--accent); color: white; transform: translateY(-2px); }
+  .footer-col h4 {
+    font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.5); margin-bottom: 1.25rem;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 0.6rem; }
+  .footer-col ul li a {
+    color: rgba(255,255,255,0.65); text-decoration: none; font-size: 0.875rem;
+    transition: color 0.2s;
+  }
+  .footer-col ul li a:hover { color: white; }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 1.5rem;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .footer-bottom p { color: rgba(255,255,255,0.4); font-size: 0.8rem; }
+  .footer-bottom-links { display: flex; gap: 1.5rem; }
+  .footer-bottom-links a { color: rgba(255,255,255,0.4); font-size: 0.8rem; text-decoration: none; }
+  .footer-bottom-links a:hover { color: rgba(255,255,255,0.7); }
+
+  /* ===== FLOATING WHATSAPP ===== */
+  .fab-whatsapp {
+    position: fixed; bottom: 2rem; right: 2rem; z-index: 999;
+    width: 56px; height: 56px;
+    background: #25D366; color: white;
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; text-decoration: none;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.5);
+    transition: all 0.3s;
+  }
+  .fab-whatsapp:hover { transform: scale(1.1); box-shadow: 0 8px 28px rgba(37,211,102,0.6); }
+  .fab-whatsapp::before {
+    content: '';
+    position: absolute; inset: -4px;
+    border-radius: 50%; border: 2px solid rgba(37,211,102,0.4);
+    animation: fabPulse 2s ease-in-out infinite;
+  }
+  @keyframes fabPulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.15); opacity: 0; }
+  }
+
+  /* ===== MOBILE NAV ===== */
+  .mobile-menu {
+    display: none; position: fixed; inset: 0; z-index: 999;
+    background: white; padding: 80px 5% 3rem;
+    flex-direction: column; gap: 0;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    padding: 1rem 0; border-bottom: 1px solid var(--border);
+    text-decoration: none; color: var(--text); font-size: 1.1rem; font-weight: 500;
+  }
+  .mobile-menu .btn-primary { margin-top: 1.5rem; justify-content: center; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 1024px) {
+    #about { grid-template-columns: 1fr; gap: 3rem; }
+    .about-img-badge { bottom: 1rem; right: 1rem; }
+    .contact-layout { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  }
+  @media (max-width: 768px) {
+    section { padding: 60px 5%; }
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+    .hero-stats { display: none; }
+    .form-row { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; }
+  }
+  @media (max-width: 480px) {
+    .hero-btns { flex-direction: column; align-items: center; }
+    .about-features { grid-template-columns: 1fr; }
+  }
+
+  /* Scroll reveal */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/919443206697" target="_blank" class="fab-whatsapp" title="Chat on WhatsApp">💬</a>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">
+    <div class="nav-logo-icon">✈</div>
+    <div class="nav-logo-text">
+      <span>Sri Devi Travels</span>
+      <span>Tamil Nadu • Since 2005</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#destinations">Destinations</a></li>
+    <li><a href="#vehicles">Vehicles</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#contact" class="nav-cta">Contact Us</a></li>
+  </ul>
+  <div class="nav-hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="toggleMenu()">About</a>
+  <a href="#services" onclick="toggleMenu()">Services</a>
+  <a href="#destinations" onclick="toggleMenu()">Destinations</a>
+  <a href="#vehicles" onclick="toggleMenu()">Vehicles</a>
+  <a href="#why" onclick="toggleMenu()">Why Choose Us</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+  <a href="tel:+919994066697" class="btn-primary" style="margin-top:1.5rem;text-decoration:none;">📞 Call Now: 9994066697</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">⭐ Trusted Travel Partner Since 2005</div>
+    <h1 class="hero-title">Sri Devi<br><span class="highlight">Travels</span></h1>
+    <p class="hero-tagline">Explore Tamil Nadu with Comfort & Trust</p>
+    <p class="hero-sub">Your premium travel companion across Tamil Nadu — from misty hill stations to sacred temples and serene coastal destinations. Safe, reliable, and always on time.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">🗺️ Book Now</a>
+      <a href="#destinations" class="btn-outline">✈ Plan Your Trip</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-num">500+</div>
+      <div class="hero-stat-label">Happy Families</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">20+</div>
+      <div class="hero-stat-label">Years Experience</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">24/7</div>
+      <div class="hero-stat-label">Availability</div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-image-wrap reveal">
+    <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600&q=90&v3" alt="Family enjoying a comfortable road trip across Tamil Nadu" loading="lazy" onerror="this.onerror=function(){this.onerror=null;this.src='https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600&q=90'};this.src='https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=600&q=90&v3'">
+    <div class="about-img-badge">
+      <strong>20+</strong>
+      <span>Years of<br>Excellence</span>
+    </div>
+  </div>
+  <div class="reveal">
+    <div class="section-tag">Our Story</div>
+    <h2 class="section-title">Tamil Nadu's Most Trusted Travel Partner</h2>
+    <p style="color:var(--text-muted);line-height:1.8;margin-bottom:1rem;">At Sri Devi Travels, we believe every journey should be memorable — not just for the destination, but for the comfort and care you experience along the way. With over two decades serving families, pilgrims, and explorers across Tamil Nadu, we've built our reputation on one simple promise: <strong>your comfort is our priority.</strong></p>
+    <p style="color:var(--text-muted);line-height:1.8;margin-bottom:1rem;">Our fleet of well-maintained vehicles and team of experienced, courteous drivers ensure you arrive safely, on time, and relaxed — every single trip.</p>
+    <div class="about-features">
+      <div class="about-feat">
+        <div class="about-feat-icon">🛡️</div>
+        <div class="about-feat-text">
+          <strong>100% Safe Journeys</strong>
+          <span>Verified drivers & insured vehicles</span>
+        </div>
+      </div>
+      <div class="about-feat">
+        <div class="about-feat-icon">⏰</div>
+        <div class="about-feat-text">
+          <strong>Always On Time</strong>
+          <span>Punctual pickups, every time</span>
+        </div>
+      </div>
+      <div class="about-feat">
+        <div class="about-feat-icon">💰</div>
+        <div class="about-feat-text">
+          <strong>Transparent Pricing</strong>
+          <span>No hidden charges, ever</span>
+        </div>
+      </div>
+      <div class="about-feat">
+        <div class="about-feat-icon">📞</div>
+        <div class="about-feat-text">
+          <strong>24/7 Support</strong>
+          <span>We're always just a call away</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-header center reveal">
+    <div class="section-tag">What We Offer</div>
+    <h2 class="section-title">Our Travel Services</h2>
+    <p class="section-sub">From a quiet family weekend to a grand pilgrimage tour — we craft every journey around your needs.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-icon">🏙️</div>
+      <h3>Local Sightseeing</h3>
+      <p>Guided city tours and local exploration with comfortable, air-conditioned vehicles and knowledgeable drivers.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">🛣️</div>
+      <h3>Outstation Trips</h3>
+      <p>Seamless long-distance travel to any destination in Tamil Nadu and beyond, with full comfort throughout.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">🛕</div>
+      <h3>Temple Tours</h3>
+      <p>Curated pilgrimages to Tamil Nadu's sacred temples — Madurai, Rameswaram, Kanyakumari and more.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">👨‍👩‍👧‍👦</div>
+      <h3>Family & Group Travel</h3>
+      <p>Spacious vehicles for families and groups. We handle logistics so you focus on making memories.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">📋</div>
+      <h3>Custom Packages</h3>
+      <p>Tailor-made itineraries built around your schedule, budget, and interests. Your trip, your way.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">✈️</div>
+      <h3>Airport Transfers</h3>
+      <p>Reliable, punctual airport pickups and drops. Start and end your journey stress-free.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DESTINATIONS -->
+<section id="destinations">
+  <div class="section-header center reveal">
+    <div class="section-tag">Explore</div>
+    <h2 class="section-title">Popular Destinations</h2>
+    <p class="section-sub">From emerald hill stations to ancient temple towns — Tamil Nadu's finest destinations await you.</p>
+  </div>
+  <div class="destinations-grid">
+    <div class="dest-card reveal">
+      <div class="dest-img-wrap">
+        <img src="https://images.unsplash.com/photo-1606298855672-4e37e2d9bd73?w=600&q=90&v3" alt="Ooty Nilgiri hills Tamil Nadu tea plantation misty green slopes" loading="lazy" onerror="this.onerror=function(){this.onerror=null;this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=90'};this.src='https://images.unsplash.com/photo-1566378246598-5b11a0d486cc?w=600&q=90&v3'">
+        <span class="dest-badge">Hill Station</span>
+      </div>
+      <div class="dest-body">
+        <h3>Ooty</h3>
+        <p>The Queen of Hill Stations — misty mountains, lush tea gardens, and the iconic Nilgiri Mountain Railway await.</p>
+        <a href="#contact" class="dest-link">Plan Trip →</a>
+      </div>
+    </div>
+    <div class="dest-card reveal">
+      <div class="dest-img-wrap">
+        <img src="https://images.unsplash.com/photo-1596895111956-bf1cf0599ce5?w=600&q=90&v3" alt="Kodaikanal Tamil Nadu lake pine forest hills" loading="lazy" onerror="this.onerror=function(){this.onerror=null;this.src='https://images.unsplash.com/photo-1508739773434-c26b3d09e071?w=600&q=90'};this.src='https://images.unsplash.com/photo-1501854140801-50d01698950b?w=600&q=90&v3'">
+        <span class="dest-badge">Hill Station</span>
+      </div>
+      <div class="dest-body">
+        <h3>Kodaikanal</h3>
+        <p>The Princess of Hills — famous for its stunning lake, Silver Cascade waterfalls, and pine-scented forests.</p>
+        <a href="#contact" class="dest-link">Plan Trip →</a>
+      </div>
+    </div>
+    <div class="dest-card reveal">
+      <div class="dest-img-wrap">
+        <img src="https://images.unsplash.com/photo-1574068468668-a05a11f871da?w=600&q=90&v3" alt="Munnar Kerala tea plantation rolling green hills" loading="lazy" onerror="this.onerror=function(){this.onerror=null;this.src='https://images.unsplash.com/photo-1518534249405-e0fbf9080000?w=600&q=90'};this.src='https://images.unsplash.com/photo-1609766856923-5d3e3e49e5c6?w=600&q=90&v3'">
+        <span class="dest-badge">Tea Country</span>
+      </div>
+      <div class="dest-body">
+        <h3>Munnar</h3>
+        <p>Rolling tea estates stretching to the horizon, cool mountain air, and breathtaking sunrises that stay with you forever.</p>
+        <a href="#contact" class="dest-link">Plan Trip →</a>
+      </div>
+    </div>
+    <div class="dest-card reveal">
+      <div class="dest-img-wrap">
+        <img src="https://images.unsplash.com/photo-1621996659490-3275b4d0d951?w=600&q=90&v3" alt="Meenakshi Amman Temple Madurai India gopuram" loading="lazy" onerror="this.onerror=function(){this.onerror=null;this.src='https://images.unsplash.com/photo-1575994532819-c65c80f4a3e6?w=600&q=90'};this.src='https://images.unsplash.com/photo-1585135497273-1a86b09fe70e?w=600&q=90&v3'">
+        <span class="dest-badge">Temple Town</span>
+      </div>
+      <div class="dest-body">
+        <h3>Madurai</h3>
+        <p>The eternal city — home to the awe-inspiring Meenakshi Amman Temple and 2,500 years of vibrant culture.</p>
+        <a href="#contact" class="dest-link">Plan Trip →</a>
+      </div>
+    </div>
+    <div class="dest-card reveal">
+      <div class="dest-img-wrap">
+        <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=600&q=90&v3" alt="Ramanathaswamy Temple Rameswaram India pilgrimage" loading="lazy" onerror="this.onerror=function(){this.onerror=null;this.src='https://images.unsplash.com/photo-1585135497273-1a86b09fe70e?w=600&q=90'};this.src='https://images.unsplash.com/photo-1575994532819-c65c80f4a3e6?w=600&q=90&v3'">
+        <span class="dest-badge">Sacred Pilgrim</span>
+      </div>
+      <div class="dest-body">
+        <h3>Rameswaram</h3>
+        <p>One of the holiest Char Dham sites — the Ramanathaswamy Temple's legendary corridors and sacred sea rituals.</p>
+        <a href="#contact" class="dest-link">Plan Trip →</a>
+      </div>
+    </div>
+    <div class="dest-card reveal">
+      <div class="dest-img-wrap">
+        <img src="https://images.unsplash.com/photo-1609766418204-8df65f79e3d3?w=600&q=90&v3" alt="Kanyakumari sunrise ocean India southernmost tip" loading="lazy" onerror="this.onerror=function(){this.onerror=null;this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=90'};this.src='https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=90&v3'">
+        <span class="dest-badge">Land's End</span>
+      </div>
+      <div class="dest-body">
+        <h3>Kanyakumari</h3>
+        <p>Where three seas meet at India's southernmost tip — witness a sunrise that paints the ocean in extraordinary colours.</p>
+        <a href="#contact" class="dest-link">Plan Trip →</a>
+      </div>
+    </div>
+    <div class="dest-card reveal">
+      <div class="dest-img-wrap">
+        <img src="https://images.unsplash.com/photo-1500622944204-b135684e99fd?w=600&q=90&v3" alt="Yercaud Shevaroy Hills Tamil Nadu lake coffee plantation" loading="lazy" onerror="this.onerror=function(){this.onerror=null;this.src='https://images.unsplash.com/photo-1508739773434-c26b3d09e071?w=600&q=90'};this.src='https://images.unsplash.com/photo-1501854140801-50d01698950b?w=600&q=90&v3'">
+        <span class="dest-badge">Hill Station</span>
+      </div>
+      <div class="dest-body">
+        <h3>Yercaud</h3>
+        <p>The Jewel of the South — a peaceful retreat nestled in the Shevaroy Hills with a tranquil lake, coffee plantations, and cool, refreshing air.</p>
+        <a href="#contact" class="dest-link">Plan Trip →</a>
+      </div>
+    </div>
+    <div class="dest-card reveal">
+      <div class="dest-img-wrap">
+        <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=600&q=90&v3" alt="Coimbatore city Tamil Nadu Western Ghats" loading="lazy" onerror="this.onerror=function(){this.onerror=null;this.src='https://images.unsplash.com/photo-1570168007204-dfb528c6958f?w=600&q=90'};this.src='https://images.unsplash.com/photo-1565967511849-76a60a516170?w=600&q=90&v3'">
+        <span class="dest-badge">City & Nature</span>
+      </div>
+      <div class="dest-body">
+        <h3>Coimbatore</h3>
+        <p>The gateway to Ooty — home to the famous Isha Yoga Centre, Western Ghats trekking trails, and a vibrant city culture at the foot of the Nilgiris.</p>
+        <a href="#contact" class="dest-link">Plan Trip →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VEHICLES -->
+<section id="vehicles">
+  <div class="section-header center reveal">
+    <div class="section-tag" style="color:#7ed6df">Our Fleet</div>
+    <h2 class="section-title">Well-Maintained Vehicles</h2>
+    <p class="section-sub" style="color:rgba(255,255,255,0.6);max-width:560px;margin:0 auto;">Every vehicle in our fleet is regularly serviced, sanitised, and equipped for your maximum comfort on every journey.</p>
+  </div>
+  <div class="vehicles-grid">
+    <div class="vehicle-card reveal">
+      <div class="vehicle-img-wrap">
+        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600&q=90&v3" alt="Toyota Innova Crysta silver SUV 7-seater premium India" loading="lazy" onerror="this.onerror=function(){this.onerror=null;this.src='https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=600&q=90'};this.src='https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=600&q=90&v3'">
+      </div>
+      <div class="vehicle-body">
+        <h3>Innova Crysta</h3>
+        <div class="vehicle-tags">
+          <span class="vehicle-tag">Premium</span>
+          <span class="vehicle-tag">7 Seats</span>
+          <span class="vehicle-tag">AC</span>
+        </div>
+      </div>
+    </div>
+    <div class="vehicle-card reveal">
+      <div class="vehicle-img-wrap">
+        <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=600&q=90&v3" alt="Tempo Traveller white passenger minibus van 12 seat India" loading="lazy" onerror="this.onerror=function(){this.onerror=null;this.src='https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=600&q=90'};this.src='https://images.unsplash.com/photo-1570125909232-eb263c188f7e?w=600&q=90&v3'">
+      </div>
+      <div class="vehicle-body">
+        <h3>Tempo Traveller</h3>
+        <div class="vehicle-tags">
+          <span class="vehicle-tag">Spacious</span>
+          <span class="vehicle-tag">12–14 Seats</span>
+          <span class="vehicle-tag">Groups</span>
+        </div>
+      </div>
+    </div>
+    <div class="vehicle-card reveal">
+      <div class="vehicle-img-wrap">
+        <img src="https://images.unsplash.com/photo-1549399542-7e8f2e928464?w=600&q=90&v3" alt="Chevrolet Tavera silver MUV 7-seater family vehicle India" loading="lazy" onerror="this.onerror=function(){this.onerror=null;this.src='https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=600&q=90'};this.src='https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=600&q=90&v3'">
+      </div>
+      <div class="vehicle-body">
+        <h3>Tavera</h3>
+        <div class="vehicle-tags">
+          <span class="vehicle-tag">Comfortable</span>
+          <span class="vehicle-tag">7 Seats</span>
+          <span class="vehicle-tag">Family</span>
+        </div>
+      </div>
+    </div>
+    <div class="vehicle-card reveal">
+      <div class="vehicle-img-wrap">
+        <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?w=600&q=90&v3" alt="Toyota Etios white compact sedan 5-seater India travel" loading="lazy" onerror="this.onerror=function(){this.onerror=null;this.src='https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=600&q=90'};this.src='https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=600&q=90&v3'">
+      </div>
+      <div class="vehicle-body">
+        <h3>Toyota Etios</h3>
+        <div class="vehicle-tags">
+          <span class="vehicle-tag">Economical</span>
+          <span class="vehicle-tag">5 Seats</span>
+          <span class="vehicle-tag">Sedan</span>
+        </div>
+      </div>
+    </div>
+    <div class="vehicle-card reveal">
+      <div class="vehicle-img-wrap">
+        <img src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=600&q=90&v3" alt="Maruti Swift Dzire compact sedan India city travel" loading="lazy" onerror="this.onerror=function(){this.onerror=null;this.src='https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=600&q=90'};this.src='https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=600&q=90&v3'">
+      </div>
+      <div class="vehicle-body">
+        <h3>Swift Dzire</h3>
+        <div class="vehicle-tags">
+          <span class="vehicle-tag">Compact</span>
+          <span class="vehicle-tag">5 Seats</span>
+          <span class="vehicle-tag">City Travel</span>
+        </div>
+      </div>
+    </div>
+    <div class="vehicle-card reveal">
+      <div class="vehicle-img-wrap">
+        <img src="https://images.unsplash.com/photo-1570125909232-eb263c188f7e?w=600&q=90&v3" alt="Force Traveller Arbenia large white minibus 17-seater group India" loading="lazy" onerror="this.onerror=function(){this.onerror=null;this.src='https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=600&q=90'};this.src='https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=600&q=90&v3'">
+      </div>
+      <div class="vehicle-body">
+        <h3>Arbenia (Force Traveller)</h3>
+        <div class="vehicle-tags">
+          <span class="vehicle-tag">Large Group</span>
+          <span class="vehicle-tag">17+ Seats</span>
+          <span class="vehicle-tag">Spacious</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section id="why">
+  <div class="section-header center reveal">
+    <div class="section-tag">Our Promise</div>
+    <h2 class="section-title">Why Choose Sri Devi Travels?</h2>
+    <p class="section-sub">We don't just take you from A to B — we make the journey itself worth remembering.</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-card reveal">
+      <div class="why-icon">👨‍✈️</div>
+      <h3>Experienced Drivers</h3>
+      <p>Our drivers bring years of road expertise, local knowledge, and a genuine commitment to your safety.</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon">🚗</div>
+      <h3>New Vehicles</h3>
+      <p>Well-maintained, regularly serviced fleet — clean, air-conditioned, and comfortable for every journey.</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon">🕐</div>
+      <h3>24/7 Availability</h3>
+      <p>Day or night, festival season or monsoon — we're available whenever you need us. Always just a call away.</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon">💎</div>
+      <h3>Affordable Pricing</h3>
+      <p>Premium service doesn't have to mean premium prices. Transparent, fair rates with zero hidden charges.</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon">🛡️</div>
+      <h3>Safe Travel</h3>
+      <p>Fully insured vehicles, GPS tracking, and strict safety standards so your family travels with complete peace of mind.</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon">🗺️</div>
+      <h3>Local Expertise</h3>
+      <p>Born and based in Tamil Nadu — our drivers know every route, shortcut, and hidden gem in the region.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="section-header center reveal">
+    <div class="section-tag">Reviews</div>
+    <h2 class="section-title">What Our Customers Say</h2>
+    <p class="section-sub">Real experiences from families who travelled with us.</p>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testi-card reveal">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"We booked a family trip to Ooty and Kodaikanal. The driver was incredibly patient with our kids and knew all the best spots. The Innova Crysta was spotlessly clean and very comfortable throughout."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">R</div>
+        <div class="testi-name">
+          <strong>Ramesh Krishnamurti</strong>
+          <span>Chennai • Family Trip to Ooty</span>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Best decision for our Rameswaram and Madurai temple tour. The driver was knowledgeable about the temples and very respectful. Pickup was exactly on time at 4 AM — truly reliable service."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">S</div>
+        <div class="testi-name">
+          <strong>Sumathi Palaniswamy</strong>
+          <span>Coimbatore • Temple Tour</span>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Booked the Tempo Traveller for a group of 12 for our college reunion trip to Kanyakumari. The vehicle was spacious and well air-conditioned. Pricing was very fair and transparent."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">V</div>
+        <div class="testi-name">
+          <strong>Vignesh Subramanian</strong>
+          <span>Trichy • Group Tour</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header center reveal">
+    <div class="section-tag">Get In Touch</div>
+    <h2 class="section-title">Plan Your Perfect Journey</h2>
+    <p class="section-sub">Ready to explore Tamil Nadu? Reach out and we'll take care of everything.</p>
+  </div>
+  <div class="contact-layout">
+    <div class="contact-info-card reveal">
+      <h3>Let's Talk Travel</h3>
+      <p>We're available 24/7 to help you plan your ideal trip. Call, WhatsApp, or write to us — we'll get back to you promptly.</p>
+      <div class="contact-items">
+        <div class="contact-item">
+          <div class="contact-item-icon">📞</div>
+          <div class="contact-item-text">
+            <strong>Phone</strong>
+            <a href="tel:+919994066697">+91 99940 66697</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">💬</div>
+          <div class="contact-item-text">
+            <strong>WhatsApp</strong>
+            <a href="https://wa.me/919443206697" target="_blank">+91 94432 06697</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">📧</div>
+          <div class="contact-item-text">
+            <strong>Email</strong>
+            <a href="mailto:thangaraj070473@gmail.com">thangaraj070473@gmail.com</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">📍</div>
+          <div class="contact-item-text">
+            <strong>Based In</strong>
+            <a href="#">Tiruchirappalli, Tamil Nadu</a>
+          </div>
+        </div>
+      </div>
+      <div class="contact-btns">
+        <a href="https://wa.me/919443206697?text=Hi,%20I%20want%20to%20book%20a%20trip%20with%20Sri%20Devi%20Travels." target="_blank" class="contact-btn whatsapp">
+          💬 Chat on WhatsApp
+        </a>
+        <a href="tel:+919994066697" class="contact-btn call">
+          📞 Call Us Now
+        </a>
+      </div>
+    </div>
+    <div class="contact-form-wrap reveal">
+      <h3>Send an Enquiry</h3>
+      <p>Fill in your details and we'll get back within the hour.</p>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" placeholder="Rajesh Kumar">
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="+91 98765 43210">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Destination</label>
+          <select>
+            <option value="">Select destination</option>
+            <option>Ooty</option>
+            <option>Kodaikanal</option>
+            <option>Munnar</option>
+            <option>Madurai</option>
+            <option>Rameswaram</option>
+            <option>Kanyakumari</option>
+            <option>Multiple Destinations</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Vehicle Type</label>
+          <select>
+            <option value="">Select vehicle</option>
+            <option>Innova Crysta</option>
+            <option>Tavera</option>
+            <option>Tempo Traveller</option>
+            <option>Etios</option>
+            <option>Swift Dzire</option>
+            <option>Arbenia (Force Traveller)</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Travel Date</label>
+          <input type="date">
+        </div>
+        <div class="form-group">
+          <label>No. of Passengers</label>
+          <input type="number" placeholder="4" min="1">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Your Message (Optional)</label>
+        <textarea placeholder="Any special requirements, pick-up location, or questions..."></textarea>
+      </div>
+      <button class="btn-submit" onclick="handleSubmit()">🚀 Send Enquiry</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:0.5rem;">
+        <div style="width:36px;height:36px;background:var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;color:white;font-size:1rem;">✈</div>
+        <span style="font-family:var(--font-display);font-size:1.3rem;font-weight:700;color:white;">Sri Devi Travels</span>
+      </div>
+      <p>Your trusted travel partner across Tamil Nadu. Comfort, safety, and reliability — since 2005.</p>
+      <div class="footer-social">
+        <a href="https://wa.me/919443206697" title="WhatsApp">💬</a>
+        <a href="tel:+919994066697" title="Call">📞</a>
+        <a href="mailto:thangaraj070473@gmail.com" title="Email">📧</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#services">Our Services</a></li>
+        <li><a href="#destinations">Destinations</a></li>
+        <li><a href="#vehicles">Our Fleet</a></li>
+        <li><a href="#why">Why Choose Us</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Destinations</h4>
+      <ul>
+        <li><a href="#contact">Ooty</a></li>
+        <li><a href="#contact">Kodaikanal</a></li>
+        <li><a href="#contact">Munnar</a></li>
+        <li><a href="#contact">Madurai</a></li>
+        <li><a href="#contact">Rameswaram</a></li>
+        <li><a href="#contact">Kanyakumari</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:+919994066697">📞 99940 66697</a></li>
+        <li><a href="https://wa.me/919443206697">💬 94432 06697</a></li>
+        <li><a href="mailto:thangaraj070473@gmail.com">📧 Email Us</a></li>
+        <li style="color:rgba(255,255,255,0.5);font-size:0.875rem;margin-top:0.5rem;">📍 Tiruchirappalli,<br>Tamil Nadu</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Sri Devi Travels. All rights reserved. Built with ❤️ for Tamil Nadu travellers.</p>
+    <div class="footer-bottom-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Navbar scroll effect
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('navbar');
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // Mobile menu toggle
+  function toggleMenu() {
+    const menu = document.getElementById('mobileMenu');
+    menu.classList.toggle('open');
+  }
+
+  // Scroll reveal
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 60);
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  // Form submit handler
+  function handleSubmit() {
+    const btn = document.querySelector('.btn-submit');
+    btn.textContent = '✅ Enquiry Sent! We\'ll contact you soon.';
+    btn.style.background = 'var(--accent)';
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.textContent = '🚀 Send Enquiry';
+      btn.style.background = '';
+      btn.disabled = false;
+    }, 4000);
+  }
+
+  // ===== IMAGE VALIDATION =====
+  // Exact-name fallback map — no category labels, no guessing
+  const imgFallbacks = {
+    'ooty': 'https://images.unsplash.com/photo-1606298855672-4e37e2d9bd73?w=600&q=90&v3',
+    'kodaikanal': 'https://images.unsplash.com/photo-1596895111956-bf1cf0599ce5?w=600&q=90&v3',
+    'munnar': 'https://images.unsplash.com/photo-1574068468668-a05a11f871da?w=600&q=90&v3',
+    'madurai': 'https://images.unsplash.com/photo-1621996659490-3275b4d0d951?w=600&q=90&v3',
+    'rameswaram': 'https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=600&q=90&v3',
+    'kanyakumari': 'https://images.unsplash.com/photo-1609766418204-8df65f79e3d3?w=600&q=90&v3',
+    'yercaud': 'https://images.unsplash.com/photo-1500622944204-b135684e99fd?w=600&q=90&v3',
+    'coimbatore': 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=600&q=90&v3',
+    'innova': 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600&q=90&v3',
+    'tempo': 'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=600&q=90&v3',
+    'tavera': 'https://images.unsplash.com/photo-1549399542-7e8f2e928464?w=600&q=90&v3',
+    'etios': 'https://images.unsplash.com/photo-1502877338535-766e1452684a?w=600&q=90&v3',
+    'swift': 'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=600&q=90&v3',
+    'force': 'https://images.unsplash.com/photo-1570125909232-eb263c188f7e?w=600&q=90&v3',
+  };
+
+  document.querySelectorAll('img').forEach(img => {
+    img.addEventListener('error', function() {
+      if (this.dataset.fallbackApplied) return;
+      this.dataset.fallbackApplied = 'true';
+      const alt = (this.alt || '').toLowerCase();
+      const matched = Object.keys(imgFallbacks).find(k => alt.includes(k));
+      this.src = matched ? imgFallbacks[matched] : 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=90';
+    });
+  });
+  const vehicleFallback = 'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=600&q=85';
+
+  document.querySelectorAll('img').forEach(img => {
+    img.addEventListener('error', function() {
+      if (this.dataset.fallbackApplied) return; // prevent infinite loop
+      this.dataset.fallbackApplied = 'true';
+      const alt = (this.alt || '').toLowerCase();
+      // Check destination match
+      const destKey = Object.keys(destFallbacks).find(k => alt.includes(k));
+      if (destKey) {
+        this.src = destFallbacks[destKey];
+        return;
+      }
+      // Vehicle or generic image fallback
+      this.src = vehicleFallback;
+    });
+  });
+
+  // Active nav link highlighting
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 100) current = s.id;
+    });
+    navLinks.forEach(link => {
+      link.style.color = link.getAttribute('href') === '#' + current ? 'var(--primary)' : '';
+    });
+  });
+</script>
+</body>
+</html>
